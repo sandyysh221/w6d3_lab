@@ -7,57 +7,48 @@ Cinema.prototype.getTitles = function () {
     return film.title;
   });
 
-  // let titles = []; 
+  // let titles = [];
   // for (film of this.films) {
   //   titles.push(film);
   // }
-  // return titles; 
-  
+  // return titles;
+
   return result;
-}
+};
 
 Cinema.prototype.filterByTitle = function (title) {
-  // let a; 
+  // let a;
   // for (film of this.films) {
   //   if (film.title == title) {
   //     a = film.title;
   //   }
   // }
-  // return a; 
+  // return a;
   const result = this.films.find((film) => {
     return title === film.title;
-    
   });
-return result; 
-}
+  return result;
+};
 
 Cinema.prototype.filterByGenre = function (genre) {
   const result = this.films.filter((film) => {
-    return genre === film.genre; 
+    return genre === film.genre;
   });
-return result;
-}
+  return result;
+};
 
 Cinema.prototype.checkByYear = function (year) {
-  let condition = false
-  const result = this.films.find((film) => {
-    return year === film.year;
-  }); 
-  if (result.length > 0) {
-    condition = true
-    return condition;
-  }
-  else {
-    return false; 
-  }
-  
-}
+  return this.films.some((film) => film.year === year);
+};
 
 Cinema.prototype.checkByLength = function (length) {
-  const result = this.films.filter((film) => {
-    return 
-  }
-}
+  return this.films.every((film) => film.length > length);
+};
 
+Cinema.prototype.calculateTotalRunningTime = function () {
+  return this.films.reduce((runningTime, film) => {
+    return runningTime + film.length;
+  }, 0);
+};
 
 module.exports = Cinema;
